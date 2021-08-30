@@ -49,31 +49,13 @@ class TicTacToe {
             secondDiagonal
         ];
 
-        let top = this.matrix[0].join('');
-        let bottom = this.matrix[2].join('');
+        for (let i = 0; i < resultMatrix.length; i++) {
+            if (JSON.stringify(resultMatrix[i]) == JSON.stringify(xWin) || JSON.stringify(resultMatrix[i]) == JSON.stringify(oWin)) {
+                return resultMatrix[i][0];
+            }
+        }
 
-        let left = this.matrix.map(item => item.filter((key, i) => i === 0)).join('');
-        let right = this.matrix.map(item => item.filter((key, i) => i === 2)).join('');
-
-        let vertical = this.matrix.map(item => item[1]).join('');
-        let horizontal = this.matrix[1].join('');
-
-        let leftDiag = this.matrix[0][0] + this.matrix[1][1] + this.matrix[2][2];
-        let rightDiag = this.matrix[0][2] + this.matrix[1][1] + this.matrix[2][0];
-
-        let arr = [top, 
-                   bottom, 
-                   left, 
-                   right, 
-                   vertical, 
-                   horizontal, 
-                   leftDiag, 
-                   rightDiag
-                   ];
-        
-        let winner = arr.filter(item => /ooo|xxx/.test(item)).join('');
-
-        return winner[0] || null;
+        return null;        
     }
 
     noMoreTurns() {
